@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp">
+
+    <EditText
+        android:id="@+id/dest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Destinatario" />
+
+    <EditText
+        android:id="@+id/obj"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dest"
+        android:layout_marginTop="15dp"
+        android:hint="Oggetto" />
+
+    <EditText
+        android:id="@+id/msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:hint="Messaggio"
+        android:lines="8"
+        android:overScrollMode="always"
+        android:scrollHorizontally="false"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Invio" />
+
+</RelativeLayout>

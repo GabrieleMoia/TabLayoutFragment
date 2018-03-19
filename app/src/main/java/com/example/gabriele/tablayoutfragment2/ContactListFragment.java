@@ -19,14 +19,14 @@ import android.widget.ListView;
  * Created by Gabriele on 08/03/2018.
  */
 
-public class Fragment2 extends Fragment {
+public class ContactListFragment extends Fragment {
 
     AdapterActivity adapterActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment2, container, false);
+        return inflater.inflate(R.layout.contact_fragment, container, false);
 
     }
 
@@ -43,25 +43,24 @@ public class Fragment2 extends Fragment {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 
-                AlertDialog.Builder adb1 = new AlertDialog.Builder(getContext());
-                adb1.setTitle("Remove");
-                adb1.setMessage("Sei sciuro di rimuovere l'elemento");
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
+                alertDialog.setTitle("Remove");
+                alertDialog.setMessage("Sei sciuro di rimuovere l'elemento");
 
-                adb1.setPositiveButton(R.string.alert_ok, new DialogInterface.OnClickListener() {
+                alertDialog.setPositiveButton(R.string.alert_ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //cose
                         DataAccessUtils.removeItem(Singleton.getInstance().getItemList().get(position), getContext());
                         adapterActivity.setValues();
                     }
                 });
-                adb1.setNegativeButton(R.string.alert_cancel, new DialogInterface.OnClickListener() {
+                alertDialog.setNegativeButton(R.string.alert_cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                     }
                 });
-                adb1.show();
+                alertDialog.show();
                 return true;
 
             }
@@ -71,18 +70,18 @@ public class Fragment2 extends Fragment {
 
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent det = new Intent(getActivity(), DetailActivity.class); //Far partire un'altra applicazione
+                Intent toDetail = new Intent(getActivity(), DetailActivity.class); //Far partire un'altra applicazione
 
-                Contatto cont = DataAccessUtils.getItemByPosition(getContext(), position);
+                Contatto contact = DataAccessUtils.getItemByPosition(getContext(), position);
 
-                String name = cont.getNome();
-                String number = cont.getNumero();
+                String name = contact.getNome();
+                String number = contact.getNumero();
 
 
-                det.putExtra("nome", name);
-                det.putExtra("numero", number);
+                toDetail.putExtra("nome", name);
+                toDetail.putExtra("numero", number);
 
-                startActivity(det);
+                startActivity(toDetail);
             }
         });
 
@@ -123,8 +122,8 @@ public class Fragment2 extends Fragment {
         switch (item.getItemId()) {
             case R.id.action_add: {
 
-                Intent i = new Intent(getActivity(), SecretActivity.class); //Far partire un'altra applicazione
-                startActivityForResult(i, 2);
+                Intent toAddActivity = new Intent(getActivity(), AddContactActivity.class); //Far partire un'altra applicazione
+                startActivityForResult(toAddActivity, 2);
             }
             default: {
                 return super.onOptionsItemSelected(item);

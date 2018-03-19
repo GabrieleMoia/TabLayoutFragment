@@ -11,10 +11,10 @@ import android.view.ViewGroup;
  * Created by Gabriele on 08/03/2018.
  */
 
-public class Fragment1 extends Fragment {
+public class ImageListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment1, container, false);
+        return inflater.inflate(R.layout.image_fragment, container, false);
     }
 }

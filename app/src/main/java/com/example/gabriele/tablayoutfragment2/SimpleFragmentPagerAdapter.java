@@ -20,15 +20,15 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
         Fragment fragment=new Fragment();
        switch (position){
            case 0:
-               Fragment1 fragment1=new Fragment1();
-                return fragment1;
+               ImageListFragment imageListFragment =new ImageListFragment();
+                return imageListFragment;
            case 1:
-               Fragment2 fragment2=new Fragment2();
-               return fragment2;
+               ContactListFragment contactListFragment =new ContactListFragment();
+               return contactListFragment;
 
            case 2:
-               Fragment3 fragment3=new Fragment3();
-               return fragment3;
+               MailSendFragment mailSendFragment =new MailSendFragment();
+               return mailSendFragment;
        }
        return fragment;
     }
